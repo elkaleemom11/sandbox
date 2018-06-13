@@ -1,0 +1,46 @@
+/* CSS for NYT Search */
+
+/* body { */
+ /* background-image: url("../images/manNCYbig.jpg"); */
+ /* background-color: #cccccc; */
+ /* width: 100%; */
+/* } */
+
+body {
+    background: url("../images/manNYC2.jpg");
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* h1 { */
+      /* text-align: center; */
+      /* font:3em 'Times New Roman', Times, serif; */
+      /* color: whitesmoke; */
+      /* font-weight: bold; */
+      /* border: whitesmoke; */
+      /* border-bottom: ridge; */
+      /* border-bottom-style: 3px; */
+      /* width: 100%; */
+      /* padding: 5px; */
+  /* } */
+
+  .container {
+      color: whitesmoke;
+      font: 1.2em color whitesmoke;
+      font-family: 'Times New Roman', Times, serif;
+
+  }
+
+    h1 {
+    color: whitesmoke;
+    font: 4.5em color whitesmoke;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    width: 100%;
+    border: 3px;
+    border-top-style: ridge;
+    border-bottom-style: ridge;
+        
+  }
+  

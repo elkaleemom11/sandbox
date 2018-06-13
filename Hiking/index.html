@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nature Hikes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.5.0/papaparse.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/main.css" />
+    <script src="assets/javascript/zipCode.js"></script>
+    <script src="assets/javascript/trails.js"></script>
+    <script src="assets/javascript/main.js"></script>
+
+</head>
+
+<body>
+    <!-- <audio controls id="myAudio"> -->
+    <!-- <source src="Wood-thrush-song.mp3" type="audio/mpeg">Your browser does not support the audio element. -->
+    <!-- </audio> -->
+    <div class="container" style="text-justify: auto">
+        <h1>Nature Hikes</h1>
+        <p> Welcome to "Nature Hikes" web site! The sky is the limit when it comes to hiking outdoors, but who has time to search
+            for that "perfect" trail? This fast and easy-to-use App gives you a list of trails within a 5 mile radius of
+            your zip code destination. Just enter your zip code below, and select a trail that fits your desire (location,
+            difficulty, and/or length). Weather conditions and UV index are provided.
+        </p>
+        <div class="container">
+            <div id="searchdata">
+
+                <div id="search-view"></div>
+                <div id="buttons-view"></div>
+
+                <form id="search-form" -webkit-appearance: none>
+
+                    <label for="search-input">
+                        <strong>Zip Code Search: </strong>
+                    </label>
+
+                    <i class="fa fa-search">
+                        <input type="text" id="search-input">
+                        <input type="submit" id="submit">
+                    </i>
+
+                    <p id="zip-error"></p>
+
+                </form>
+
+                <div class="row">
+
+                    <div id="weather" class="col-md" style="text-align: center">
+                        <strong>Weather(F):</strong>
+                    </div>
+
+
+                    <div id="uv-index" class="col-md">
+                        <strong>UV Index (UVI):</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <br>
+
+            <div id="trails" class="container mx-auto text-center p-0 m-0">
+            </div>
+</body>
+
+</html>

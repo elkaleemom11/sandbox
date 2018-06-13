@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New York Times Search</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Title -->
+        <h1>New York Times Search</h1>
+
+        <!-- Input Form -->
+        <div id="search-view"></div>
+        <div id="buttons-view"></div>
+        <form>
+            <form id="search-form">
+
+                <!--Search NYT-->
+                <label for="search-input">Search NYT:</label>
+                <i class="fa fa-search">
+                    <input type="text" id="search-input">
+                </i>
+                <br>
+                <br>
+
+                <!--Number of Records to Retrieve-->
+                <label for="number-input">Number of Records to Retrieve:</label>
+                <i class="fa fa-newspaper-o">
+                    <input type="text" id="number-input">
+                </i>
+                <br>
+                <br>
+
+                <!--Start Date of Search-->
+                <label for="start-input">Start Date: (YEARMMDD)</label>
+                <i class="fa fa-calendar-o">
+                    <input type="text" id="start-input">
+                </i>
+                <br>
+                <br>
+
+                <!--End Date of Search-->
+                <label for="end-input">End Date: (YEARMMDD)</label>
+                <i class="fa fa-calendar">
+                    <input type="text" id="end-input">
+                </i>
+                <br>
+                <br>
+
+                <!--Search Button-->
+                <i class="fa fa-search-plus"></i>
+                <input id="search" type="submit" value="Search">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <!-- This is the div that the search results are attached to -->
+                <div id="insert"></div>
+
+    </div>
+    </form>
+
+    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!BEGIN SCRIPT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <script>
+
+        //This function starts when you click on the search button
+        $("#search").on("click", function (event) {
+            // Prevents form from submitting//
+            event.preventDefault();
+
+            //These are variables that pull the user inputed data out of the forms. NOTE: This data is automatically an object
+            var search = $("#search-input").val().trim();
+
+            var number = $("#number-input").val().trim();
+
+            var start = $("#start-input").val().trim();
+
+            var end = $("#end-input").val().trim();
+
+
+            //The url needs the search as a string so stringify is used to turn the input into a string
+            var searchtwo = JSON.stringify(search);
+            console.log(searchtwo);
+
+
+
+            var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+            url += '?' + $.param({
+                'api-key': "41b06a4299d241b3a84278cceb1a6130",
+                'q': searchtwo,
+                'begin_date': start,
+                'end_date': end
+            });
+
+            $.ajax({
+                url: url,
+                method: 'GET',
+            }).done(function (result) {
+
+
+                console.log(result);
+                console.log(result.response.docs[0].headline.kicker)
+                for (var i = 0; i < number; i++) {
+                    var bottomLink = $("<li>");
+                    $(bottomLink).append(result.response.docs[i].headline.kicker + " ");
+                    $(bottomLink).append(result.response.docs[i].byline.original + " ");
+                    $(bottomLink).append(result.response.docs[i].pub_date + " ");
+                    $(bottomLink).append(result.response.docs[i].web_url + " ");
+
+
+                    $("#insert").append(bottomLink)
+                    $("#insert").append("<hr>")
+
+
+                }
+
+            }).fail(function (err) {
+                throw err;
+
+
+            });
+        });
+
+        // Get reference to existing tbody element, create a new table row element
+        var tBody = $("tbody");
+        var tRow = $("<tr>");
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
